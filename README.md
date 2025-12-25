@@ -22,7 +22,7 @@ A comprehensive Hospital Management System built on the MERN stack to enhance ho
 - **Backend**: Node.js and Express.js
 - **Database**: MongoDB
 - **Authentication**: JWT (JSON Web Tokens)
-- **State Management**: Redux (optional)
+- **State Management**: Redux
 
 <br/><hr/><br/>
 
