@@ -10,3 +10,6 @@
 ::-webkit-scrollbar{
     display: none;
 }
+.input {
+  @apply w-full rounded-lg border px-3 py-2 outline-none focus:border-primary;
+}

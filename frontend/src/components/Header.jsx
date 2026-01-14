@@ -2,29 +2,70 @@ import React from 'react'
 import { assets } from '../assets/assets'
 
 const Header = () => {
-    return (
-        <div className='flex flex-col md:flex-row flex-wrap bg-primary rounded-lg px-6 md:px-10 lg:px-20 '>
+  return (
+    <section className="md:mx-10 mt-6">
+      <div className="relative flex flex-col md:flex-row items-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-blue-700 px-6 md:px-12 lg:px-20">
 
-            {/* --------- Header Left --------- */}
-            <div className='md:w-1/2 flex flex-col items-start justify-center gap-4 py-10 m-auto md:py-[10vw] md:mb-[-30px]'>
-                <p className='text-3xl md:text-4xl lg:text-5xl text-white font-semibold leading-tight md:leading-tight lg:leading-tight'>
-                    Book Appointment <br />  With Trusted Doctors
-                </p>
-                <div className='flex flex-col md:flex-row items-center gap-3 text-white text-sm font-light'>
-                    <img className='w-28' src={assets.group_profiles} alt="" />
-                    <p>Simply browse through our extensive list of trusted doctors, <br className='hidden sm:block' /> schedule your appointment hassle-free.</p>
-                </div>
-                <a href='#speciality' className='flex items-center gap-2 bg-white px-8 py-3 rounded-full text-[#595959] text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300'>
-                    Book appointment <img className='w-3' src={assets.arrow_icon} alt="" />
-                </a>
-            </div>
+        {/* -------- Left Content -------- */}
+        <div className="md:w-1/2 flex flex-col gap-6 py-14 md:py-28 text-white">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            Book Appointment <br />
+            <span className="text-blue-200">With Trusted Doctors</span>
+          </h1>
 
-            {/* --------- Header Right --------- */}
-            <div className='md:w-1/2 relative'>
-                <img className='w-full md:absolute bottom-0 h-auto rounded-lg' src={assets.header_img} alt="" />
-            </div>
+          <div className="flex items-center gap-4 text-sm text-blue-100">
+            <img
+              className="w-28"
+              src={assets.group_profiles}
+              alt="Trusted doctors"
+            />
+            <p className="max-w-md leading-relaxed">
+              Simply browse through our extensive list of trusted doctors and
+              schedule your appointment hassle-free.
+            </p>
+          </div>
+
+          {/* CTA */}
+          <a
+            href="#speciality"
+            className="group mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-medium text-gray-700 shadow-md transition-all hover:scale-105 hover:shadow-lg"
+          >
+            Book Appointment
+            <img
+              className="w-3 transition-transform group-hover:translate-x-1"
+              src={assets.arrow_icon}
+              alt=""
+            />
+          </a>
         </div>
-    )
+
+        {/* -------- Right Image -------- */}
+        <div className="md:w-1/2 relative flex justify-center md:justify-end">
+          <img
+            src={assets.header_img}
+            alt="Doctor consultation"
+            className="w-full max-w-lg animate-float"
+          />
+        </div>
+
+        {/* Decorative Glow */}
+        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
+      </div>
+
+      {/* Animation */}
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+          .animate-float {
+            animation: float 4s ease-in-out infinite;
+          }
+        `}
+      </style>
+    </section>
+  )
 }
 
 export default Header

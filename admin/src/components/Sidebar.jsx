@@ -1,51 +1,77 @@
 import React, { useContext } from 'react'
-import { assets } from '../assets/assets'
 import { NavLink } from 'react-router-dom'
+import { assets } from '../assets/assets'
 import { DoctorContext } from '../context/DoctorContext'
 import { AdminContext } from '../context/AdminContext'
 
 const Sidebar = () => {
-
   const { dToken } = useContext(DoctorContext)
   const { aToken } = useContext(AdminContext)
 
+  const adminLinks = [
+    {
+      to: '/admin-dashboard',
+      label: 'Dashboard',
+      icon: assets.home_icon,
+    },
+    {
+      to: '/all-appointments',
+      label: 'Appointments',
+      icon: assets.appointment_icon,
+    },
+    {
+      to: '/add-doctor',
+      label: 'Add Doctor',
+      icon: assets.add_icon,
+    },
+    {
+      to: '/doctor-list',
+      label: 'Doctors List',
+      icon: assets.people_icon,
+    },
+  ]
+
+  const doctorLinks = [
+    {
+      to: '/doctor-dashboard',
+      label: 'Dashboard',
+      icon: assets.home_icon,
+    },
+    {
+      to: '/doctor-appointments',
+      label: 'Appointments',
+      icon: assets.appointment_icon,
+    },
+    {
+      to: '/doctor-profile',
+      label: 'Profile',
+      icon: assets.people_icon,
+    },
+  ]
+
+  const links = aToken ? adminLinks : dToken ? doctorLinks : []
+
+  const linkClass = ({ isActive }) =>
+    `flex items-center gap-3 px-4 md:px-9 py-3.5 cursor-pointer transition-all
+     ${
+       isActive
+         ? 'bg-blue-50 border-r-4 border-primary text-primary'
+         : 'text-gray-600 hover:bg-gray-100'
+     }`
+
   return (
-    <div className='min-h-screen bg-white border-r'>
-      {aToken && <ul className='text-[#515151] mt-5'>
-
-        <NavLink to={'/admin-dashboard'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.home_icon} alt='' />
-          <p className='hidden md:block'>Dashboard</p>
-        </NavLink>
-        <NavLink to={'/all-appointments'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.appointment_icon} alt='' />
-          <p className='hidden md:block'>Appointments</p>
-        </NavLink>
-        <NavLink to={'/add-doctor'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.add_icon} alt='' />
-          <p className='hidden md:block'>Add Doctor</p>
-        </NavLink>
-        <NavLink to={'/doctor-list'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.people_icon} alt='' />
-          <p className='hidden md:block'>Doctors List</p>
-        </NavLink>
-      </ul>}
-
-      {dToken && <ul className='text-[#515151] mt-5'>
-        <NavLink to={'/doctor-dashboard'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.home_icon} alt='' />
-          <p className='hidden md:block'>Dashboard</p>
-        </NavLink>
-        <NavLink to={'/doctor-appointments'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.appointment_icon} alt='' />
-          <p className='hidden md:block'>Appointments</p>
-        </NavLink>
-        <NavLink to={'/doctor-profile'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.people_icon} alt='' />
-          <p className='hidden md:block'>Profile</p>
-        </NavLink>
-      </ul>}
-    </div>
+    <aside className="min-h-screen w-16 md:w-72 bg-white border-r">
+      <ul className="mt-6 space-y-1">
+        {links.map((item) => (
+          <NavLink key={item.to} to={item.to} className={linkClass}>
+            <img src={item.icon} alt="" className="w-5 min-w-5" />
+            <span className="hidden md:block text-sm font-medium">
+              {item.label}
+            </span>
+          </NavLink>
+        ))}
+      </ul>
+    </aside>
   )
 }
 
