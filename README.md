@@ -34,22 +34,3 @@ A comprehensive Hospital Management System built on the MERN stack to enhance ho
 
 **Admin Dashboard** 👉 [LINK](https://care-cloud-panel.vercel.app)
 </div>
-
-<br/><hr/><br/>
-
-<div align="center">
-
-# User Dashboard 👤:
-![UI](./frontend/src/assets/homepage.png)
-
-<br /><hr /><br />
-
-# Doctor Panel 🧑‍⚕️:
-![doctor-panel](./frontend/src/assets/doctor-dashboard.png)
-
-<br /><hr /><br />
-
-# Admin Panel 🎯:
-![admin-panel](./frontend/src/assets/admin-panel.png)
-
-</div>
